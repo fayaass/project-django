@@ -136,7 +136,7 @@ def delete_cart(req,id):
     return redirect(view_cart) 
 
 def user_buy(req,cid):
-    user=User.objects.get(username=req.sessions['user'])
+    user=User.objects.get(username=req.session['user'])
     cart=Cart.objects.get(pk=cid)
     product=cart.product
     price=cart.product.ofr_price
@@ -146,7 +146,7 @@ def user_buy(req,cid):
     return redirect(view_cart)
 
 def user_buy1(req,pid):
-    user=User.objects.get(username=req.sessions['user'])
+    user=User.objects.get(username=req.session['user'])
     product=Product.objects.get(pk=pid)
     price=product.ofr_price
     buy=Buy.objects.create(user=user,product=product,price=price)
