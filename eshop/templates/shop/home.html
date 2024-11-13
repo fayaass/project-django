@@ -28,6 +28,9 @@
                 <a class="nav-link" href="add_prod">Add Products</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="booking">Booking</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="shp_logout">Log out</a>
               </li>    
             </ul>
@@ -40,7 +43,7 @@
         {% for product in data %}
         <div class="col-lg-4">
           <div class="card">
-            <img class="card-img-top" src="{{product.img.url}}" alt="Card image" style="height: 400px; width: 100%;">
+            <img class="card-img-top" src="{{product.img.url}}" alt="Card image" style="height: 400px; width: 100%; ">
             <div class="card-body">
               <h4 class="card-title">{{product.name}}</h4>
               <p class="card-text">{{product.dis}}</p>

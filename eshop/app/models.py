@@ -16,7 +16,7 @@ class Cart(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE)
 
 class Buy(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    Product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
     price=models.IntegerField()
     data=models.DateField(auto_now_add=True)

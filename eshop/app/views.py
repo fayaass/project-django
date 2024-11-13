@@ -92,6 +92,14 @@ def delete_prod(req,pid):
     data.delete()
     return redirect(shp_home)
 
+
+
+def booking(req):
+    buy=Buy.objects.all()[::-1]
+    return render(req,'shop/booking.html',{'buy':buy})
+
+#------------------------user--------------------------------
+
 def register(req):
     if req.method=='POST':
         name=req.POST['name']
@@ -147,9 +155,19 @@ def user_buy(req,cid):
 
 def user_buy1(req,pid):
     user=User.objects.get(username=req.session['user'])
-    product=Product.objects.get(pk=pid)
+    product=Product.objects.get(pk=pid) 
     price=product.ofr_price
     buy=Buy.objects.create(user=user,product=product,price=price)
     buy.save()
     return redirect(user_home)
+
+
+
+def user_booking(req):
+    user=User.objects.get(username=req.session['user'])
+    buy=Buy.objects.filter(user=user)[::-1]
+    return render(req,'user/booking.html',{'buy':buy})
+
+
+
 
