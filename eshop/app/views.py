@@ -5,6 +5,9 @@ import os
 from django.contrib.auth.models import User
 from django.contrib import messages
 
+from django.core.mail import send_mail
+from django.conf import settings 
+
 # Create your views here.
 
 
@@ -105,7 +108,9 @@ def register(req):
         name=req.POST['name']
         email=req.POST['email']
         password=req.POST['password']
+        send_mail('user registration','eshop account created', settings.EMAIL_HOST_USER, [email])
         try:
+           
             data=User.objects.create_user(first_name=name,email=email,password=password,username=email)
             data.save()
             return redirect(shp_login)
